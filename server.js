@@ -34,6 +34,9 @@ app.post('/house', (req, res) => {
 
 app.set('view engine', 'ejs');
 
+//allows the js to be loaded in index.ejs 
+app.set("/js", express.static(__dirname + "/js"));
+
 app.get('/', (req, res) => {
 	db.collection('house').find().toArray((err, result) => {
 		if (err) return console.log(err);
@@ -42,6 +45,10 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('public'));
+
+//allows the css to be loaded in index.ejs 
+app.use("/css", express.static(__dirname + "/css"));
+
 
 app.put('/house', (req, res) => {
 	db.collection('house').findOneAndUpdate(
