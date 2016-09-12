@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient
 const app = express();
 
+//teahcing the server to read JSON which is the form in which we send the data using the fetch api
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('public'));
