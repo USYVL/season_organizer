@@ -27,10 +27,10 @@ MongoClient.connect('mongodb://aja_b:hooB52B@ds013926.mlab.com:13926/usyvl-roste
 app.post('/house', (req, res) => {
 	db.collection('house').save(req.body, (err, result) => {
 		if (err) return console.log(err);
-		console.log('saved house keeping to database');
+		console.log('saved teams to database');
 		res.redirect('/')
 		});
-	});
+});
 
 
 app.set('view engine', 'ejs');
@@ -83,7 +83,7 @@ app.post('/rides', (req, res) => {
 		console.log('saved rides to database');
 		res.redirect('/')
 		});
-	});
+});
 
 app.get('/', (req, res) => {
 	db.collection('rides').find().toArray((err, result) => {
