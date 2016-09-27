@@ -13,18 +13,18 @@
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-        <h1>USYVL Fall 2016 Team Roster</h1>
+        <h1>USYVL Season Organizer</h1>
         <section>
         <h2>Teams</h2>
          <article>
         <h3>Age Group 7-8</h3>
         <form action="/house" method="POST">
         <input type="text" placeholder="Team #" name="team">
-        <select>
-        <option value="Age7-8" name="age"> Age Group 7-8</option>
-        <option value="Age9-10" name="age"> Age Group 9-10</option>
-        <option value="Age11-12" name="age"> Age Group 11-12</option>
-        <option value="Age13-15" name="age"> Age Group 13-15</option>
+        <select name="age">
+        <option value="Age7-8"> Age Group 7-8</option>
+        <option value="Age9-10"> Age Group 9-10</option>
+        <option value="Age11-12"> Age Group 11-12</option>
+        <option value="Age13-15"> Age Group 13-15</option>
         </select>
         <input type="text" placeholder="Coach Name" name="coach">
         <input type="text" placeholder="Team Name" name="teamName">
@@ -43,7 +43,6 @@
         		<th>Team Name</th>
         		<th>Shirt Color</th>
         	</tr>
-        	
         	<% for(var i=0; i<house.length; i++) {%>
         	<tr>
         		<td><%= house[i].team %></td>
@@ -53,13 +52,12 @@
         		<td><%= house[i].shirtColor %></td>
         	</tr>
         	<% }%>
-        	
         </table>
         
         <p>Do you need to update any of the existing team information? Select the team you wish to update.</p>
-        <select>
+        <select id="edit" name="edit">
         <% for(var i=0; i<house.length; i++) {%>
-        <option id="edit" value="<%= house[i].team %>"> <%= house[i].team %></option>
+        <option value="<%= house[i].team %>"> <%= house[i].team %></option>
         <% } %>
         </select>
         
@@ -69,14 +67,15 @@
         <button id="update">Update</button>
         
         <p>Do you need to delete a team? Select the team you wish to delete.</p>
-        <select>
+        <select id="teamDelete" name="teamDelete">
         <% for(var i=0; i<house.length; i++) {%>
-        <option id="teamDelete" value="<%= house[i].team %>"> <%= house[i].team %></option>
+        <option value="<%= house[i].team %>"> <%= house[i].team %></option>
         <% } %>
         </select>
         <button id="delete">Delete</button>
         </article>
-        
+        </section>
+     
         
         <section>
         <h2>Calendar</h2>
@@ -109,6 +108,7 @@
         		<th>Driver Name</th>
         		<th>Seats Available</th>
         	</tr>
+        	
         </table>
         <table>
         	<tr>

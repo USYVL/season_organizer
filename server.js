@@ -77,8 +77,9 @@ app.delete('/house', (req, res) => {
 		});
 });
 
-app.post('/rides', (req, res) => {
-	db.collection('rides').save(req.body, (err, result) => {
+
+app.post('/ride', (req, res) => {
+	db.ride.save(req.body, (err, result) => {
 		if (err) return console.log(err);
 		console.log('saved rides to database');
 		res.redirect('/')
@@ -86,8 +87,23 @@ app.post('/rides', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	db.collection('rides').find().toArray((err, result) => {
+	db.ride.find().toArray((err, result) => {
 		if (err) return console.log(err);
-		res.render('index.ejs', {rides: result});
+		res.render('index.ejs', {ride: result});
 		});
 });
+
+/*app.post('/ride', (req, res) => {
+	db.collection('ride').save(req.body, (err, result) => {
+		if (err) return console.log(err);
+		console.log('saved rides to database');
+		res.redirect('/')
+		});
+});
+
+app.get('/', (req, res) => {
+	db.collection('ride').find().toArray((err, result) => {
+		if (err) return console.log(err);
+		res.render('index.ejs', {ride: result});
+		});
+});*/
