@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 app.use(express.static('public'));
 
 //allows the css to be loaded in index.ejs 
-app.set("/css", express.static(__dirname + "/css"));
+app.use('/css', express.static(__dirname + '/css'));
 
 
 app.put('/house', (req, res) => {
