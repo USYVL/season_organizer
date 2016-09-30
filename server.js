@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient
 const app = express();
 
-//teahcing the server to read JSON which is the form in which we send the data using the fetch api
+//teaching the server to read JSON which is the form in which we send the data using the fetch api
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('public'));
@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 /*app.get('/', (req, res) => {
 		res.sendFile('/Users/aja/usyvlteams/index.html')
 });*/
+
 
 var db
 MongoClient.connect('mongodb://aja_b:hooB52B@ds013926.mlab.com:13926/usyvl-roster', (err, database) => {
@@ -48,13 +49,13 @@ app.get('/', (req, res) => {
 app.use(express.static('public'));
 
 //allows the css to be loaded in index.ejs 
-app.use("/css", express.static(__dirname + "/css"));
+app.set("/css", express.static(__dirname + "/css"));
 
 
 app.put('/house', (req, res) => {
 	db.collection('house').findOneAndUpdate(
-		/*{team: 'Team2'},*/
-		{team: edit},
+		{team: 'Team3'},
+		/*{team: edit},*/
 		{$set: {
 			team: req.body.team,
 			coach: req.body.coach,
@@ -74,11 +75,12 @@ app.delete('/house', (req, res) => {
 		(err, result) => {
 			if (err) return res.send(500, err)
 			res.send('A team was deleted.')
+			res.redirect('/')
 		});
 });
 
 
-app.post('/ride', (req, res) => {
+/*app.post('/ride', (req, res) => {
 	db.ride.save(req.body, (err, result) => {
 		if (err) return console.log(err);
 		console.log('saved rides to database');
@@ -93,7 +95,7 @@ app.get('/', (req, res) => {
 		});
 });
 
-/*app.post('/ride', (req, res) => {
+app.post('/ride', (req, res) => {
 	db.collection('ride').save(req.body, (err, result) => {
 		if (err) return console.log(err);
 		console.log('saved rides to database');

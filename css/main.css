@@ -95,7 +95,7 @@ textarea {
    My custom styles
    ========================================================================== */
 table {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	background-color: orange;
 }
 th, td {
@@ -105,6 +105,7 @@ th, td {
 
 h1{
 	text-align: center;
+	color: blue;
 }
 
 footer {
@@ -112,16 +113,26 @@ footer {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+body {
+	background-color: #008ae6;
+}
+   
+header {
+	background-color: white;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	margin-right: 2%;
+	margin-left: 2%;
+	padding-top: .25%;
+	padding-bottom: .25%;
+	padding-right: .5%;
+	padding-left: .5%;
+}
+   
+h1, h2 {
+	text-align: center;
+	color: #4da6ff;
+}
 
 
 /* ==========================================================================
